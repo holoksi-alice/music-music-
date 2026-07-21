@@ -3,561 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🥞 Juju's 2026 英法雙國 16 天深度遊 · 行程大師表</title>
+    <title>✨ 我們的英法浪漫旅程 ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cute-bg': '#FFF9E6',
+                        'cute-pink': '#FF8FAB',
+                        'cute-blue': '#a2d2ff',
+                        'cute-yellow': '#ffe5d9',
+                        'cute-text': '#4a4e69',
+                        'cute-dark': '#22223b'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg-main: #fdfaf2;       /* 溫柔柔紗淺黃色 */
-            --theme-light: #fffdeb;  /* 奶油泡芙黃 */
-            --theme-accent: #fde285; /* 溫暖鵝黃色 */
-            --theme-dark: #e67e22;   /* 焦糖橘（字體強調） */
-            --text-main: #2c3e50;    /* 深炭灰 */
-            --text-muted: #7f8c8d;   /* 說明灰色 */
-            --card-bg: #ffffff;      /* 純白呼吸卡片 */
-            --border-radius: 20px;
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        body { 
+            font-family: 'Nunito', 'Noto Sans TC', sans-serif; 
+            background-color: #FFF9E6;
+            background-image: radial-gradient(#FF8FAB 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
         }
-
-        body {
-            font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
-        }
-
-        header {
-            background: linear-gradient(135deg, #fff9db 0%, var(--theme-accent) 100%);
-            text-align: center;
-            padding: 3.5rem 1.5rem;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.05);
-            margin-bottom: 2.5rem;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.2rem;
-            color: #d35400;
-        }
-
-        header p {
-            margin: 0.8rem 0 0 0;
-            font-size: 1.1rem;
-            color: #e67e22;
-            font-weight: 500;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 1.5rem 5rem 1.5rem;
-        }
-
-        /* 頂部快速切換：修復分頁點擊 */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background-color: var(--card-bg);
-            border: 2px solid var(--theme-accent);
-            padding: 0.9rem 1.8rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1.05rem;
-            font-weight: bold;
-            color: var(--text-main);
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background-color: var(--theme-accent);
-            color: #d35400;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(252, 226, 133, 0.4);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease-in-out forwards;
-        }
-
-        /* 呼吸感排版：獨立大卡片 */
-        .card {
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 2.2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 10px 30px rgba(164, 143, 91, 0.05);
-            border: 1px solid rgba(252, 226, 133, 0.25);
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            color: #d35400;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 2px dashed var(--theme-accent);
-            padding-bottom: 0.6rem;
-        }
-
-        /* 每日行程獨立大卡片 */
-        .day-card {
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 2.2rem;
-            margin-bottom: 2.5rem;
-            border-left: 8px solid var(--theme-accent);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.03);
-            position: relative;
-        }
-
-        .day-badge {
-            display: inline-block;
-            background-color: #fff3cd;
-            color: #d35400;
-            font-weight: 800;
-            font-size: 1.2rem;
-            padding: 0.4rem 1.2rem;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-        }
-
-        .day-city {
-            float: right;
-            background: linear-gradient(135deg, #eccc68, #ff7f50);
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .tab-btn.active {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(255, 143, 171, 0.3);
+            background: linear-gradient(135deg, #FF8FAB 0%, #ffc2d1 100%);
             color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            border: none;
         }
-
-        .section-item {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .section-item::before {
-            content: "•";
-            color: var(--theme-dark);
-            font-weight: bold;
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-
-        /* 實用標籤 */
-        .badge {
-            font-size: 0.8rem;
-            padding: 0.25rem 0.8rem;
-            border-radius: 12px;
-            font-weight: bold;
-            color: white;
-            margin-left: 5px;
-            display: inline-block;
-        }
-        .badge-flight { background-color: #54a0ff; }
-        .badge-hotel { background-color: #ff9f43; }
-        .badge-dining { background-color: #ff6b6b; }
-        .badge-activity { background-color: #10ac84; }
-
-        /* 地圖導航按鈕 */
-        .map-link-box {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .btn-map {
+        
+        /* 交通步驟小數字樣式 */
+        .step-num {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background-color: var(--theme-light);
-            color: #d35400;
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 14px;
-            font-size: 0.95rem;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            background-color: #2563EB;
+            color: white;
+            border-radius: 50%;
+            font-size: 11px;
             font-weight: bold;
-            border: 1px solid var(--theme-accent);
-            transition: all 0.2s ease;
-        }
-
-        .btn-map:hover {
-            background-color: var(--theme-accent);
-            transform: translateY(-2px);
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        li {
-            margin-bottom: 0.8rem;
-        }
-
-        .bold-label {
-            font-weight: bold;
-            color: #e67e22;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .day-card { padding: 1.5rem; }
-            .day-city { float: none; display: block; width: fit-content; margin-top: 0.5rem; }
+            margin-right: 4px;
         }
     </style>
 </head>
-<body>
+<body class="text-cute-text antialiased pb-24">
 
-    <header>
-        <h1>🧸 2026 英法雙國 16 天深度遊</h1>
-        <p>✨ 旅客：Lok Si Ho ＆ Hei Tung Lam | 旅遊資訊與預約管理網站 ✨</p>
+    <!-- 頂部標題列 -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 rounded-b-3xl border-b border-pink-100">
+        <div class="max-w-3xl mx-auto px-4 py-5 text-center">
+            <h1 class="text-2xl font-bold text-cute-dark tracking-wide">✈️ 2026 歐洲浪漫探險 🥐</h1>
+            <p class="text-xs text-cute-pink mt-1 font-bold">London 🇬🇧 × Paris 🇫🇷 × South France 🏖️</p>
+        </div>
+        
+        <!-- 分頁導航 -->
+        <nav class="max-w-3xl mx-auto px-4 pb-4 overflow-x-auto no-scrollbar flex space-x-3 items-center">
+            <button id="btn-tab-1" onclick="openTab('tab-1')" class="tab-btn active shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border-2 border-pink-100 bg-white text-cute-text">🚨 叮嚀與交通</button>
+            <button id="btn-tab-2" onclick="openTab('tab-2')" class="tab-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border-2 border-pink-100 bg-white text-cute-text">✈️ 票券整理</button>
+            <button id="btn-tab-3" onclick="openTab('tab-3')" class="tab-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border-2 border-pink-100 bg-white text-cute-text">🏨 溫暖小窩</button>
+            <button id="btn-tab-4" onclick="openTab('tab-4')" class="tab-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border-2 border-pink-100 bg-white text-cute-text">🍽️ 摘星與門票</button>
+            <button id="btn-tab-5" onclick="openTab('tab-5')" class="tab-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border-2 border-pink-100 bg-white text-cute-text">📅 每日探險</button>
+        </nav>
     </header>
 
-    <div class="container">
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'itinerary-view')">📅 16 天獨立每日行程</button>
-            <button class="tab-btn" onclick="openTab(event, 'booking-view')">🎟️ 總預約文件庫</button>
-        </div>
+    <!-- 主內容區 -->
+    <main class="max-w-3xl mx-auto px-4 mt-8">
 
-        <div id="itinerary-view" class="tab-content active" style="display: block;">
-
-            <div class="day-card">
-                <span class="day-city">🇬🇧 倫敦</span>
-                <div class="day-badge">📅 Day 1 : 23/07 (四)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>07:00 抵達倫敦希斯洛機場 (LHR) ➡ 前往 Hotel Indigo 寄放行李 ➡ 14:00 觀賞音樂劇《Matilda》 ➡ 19:00 提早回酒店休息調時差。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>午餐：劇院周邊享用輕食 / 晚餐：西區小酒館自理。</div>
-                <div class="section-item"><span class="bold-label">🎟️ 今日預約：</span>14:00 音樂劇《Matilda The Musical》 @ Cambridge Theatre <span class="badge badge-activity">門票已確認</span></div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Hotel Indigo London K West</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Heathrow+Airport" target="_blank" class="btn-map">📍 希斯洛機場 (LHR)</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Indigo+London+K+West+Shepherds+Bush" target="_blank" class="btn-map">📍 Hotel Indigo London K West</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Cambridge+Theatre+London" target="_blank" class="btn-map">📍 Cambridge Theatre (Matilda)</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇬🇧 倫敦</span>
-                <div class="day-badge">📅 Day 2 : 24/07 (五)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>11:00 參觀 Mundo Pixar Experience 皮克斯展 ➡ 13:00 逛 Borough Market ➡ 下午經典地標街拍。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>午餐：Borough Market 自理 / 晚餐：20:30 於米其林一星 KOL London 享用。</div>
-                <div class="section-item"><span class="bold-label">🎟️ 今日預約：</span>11:00 《Mundo Pixar Experience》 <span class="badge badge-activity">已預約</span> ｜ 20:30 KOL London <span class="badge badge-dining">已確認</span></div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Hotel Indigo London K West</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Wembley+Park+London" target="_blank" class="btn-map">📍 Mundo Pixar (Wembley)</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Borough+Market+London" target="_blank" class="btn-map">📍 Borough Market 波羅市場</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=KOL+Restaurant+London" target="_blank" class="btn-map">📍 KOL London 餐廳</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇬🇧 布萊頓</span>
-                <div class="day-badge">📅 Day 3 : 25/07 (六)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>布萊頓（Brighton）海灘一日遊 ➡ The Lanes 淘古著與精品。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>午餐：海鮮餐廳 The Salt Room / 晚餐：酒店周邊自理。</div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Hotel Indigo London K West</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Brighton+Beach" target="_blank" class="btn-map">📍 布萊頓海灘 Brighton Beach</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Lanes+Brighton" target="_blank" class="btn-map">📍 The Lanes 古著街</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Salt+Room+Brighton" target="_blank" class="btn-map">📍 The Salt Room 海鮮餐廳</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇬🇧 倫敦 ➡ 🇫🇷 巴黎</span>
-                <div class="day-badge">📅 Day 4 : 26/07 (日)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>收拾行李退房 ➡ 搭乘 Eurostar 從倫敦 St Pancras 前往巴黎北站 (出發時間介於 13:00 - 20:31 之間) ➡ 抵達後入住巴黎市中心酒店 L'Opale Noire。</div>
-                <div class="section-item"><span class="bold-label">🚆 交通預約：</span>Eurostar Snap 跨國列車 (出發時間介於 13:00 - 20:31) <span class="badge badge-flight">火車已確認</span></div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>L'Opale Noire (巴黎市中心)</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=St+Pancras+International+Station" target="_blank" class="btn-map">📍 倫敦 St Pancras 車站</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Gare+du+Nord+Paris" target="_blank" class="btn-map">📍 巴黎北站 Gare du Nord</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=LOpale+Noire+Paris" target="_blank" class="btn-map">📍 L'Opale Noire 酒店</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 巴黎</span>
-                <div class="day-badge">📅 Day 5 : 27/07 (一)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>羅浮宮或奧賽博物館 ➡ 香榭麗舍大道購物 ➡ 傍晚於凱旋門頂看日落與巴黎鐵塔點燈。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>晚餐建議預訂 Bateaux Parisiens 晚餐遊船。</div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>L'Opale Noire</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Louvre+Museum+Paris" target="_blank" class="btn-map">📍 羅浮宮 Louvre</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Champs-Elysees+Paris" target="_blank" class="btn-map">📍 香榭麗舍大道</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Arc+de+Triomphe+Paris" target="_blank" class="btn-map">📍 凱旋門 Arc de Triomphe</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 巴黎</span>
-                <div class="day-badge">📅 Day 6 : 28/07 (二)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>凡爾賽宮深度遊 (12:30 午宴後走 VIP 快速通道入宮)。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>午餐 12:30 於 Ore - Ducasse au château de Versailles 享用。 <span class="badge badge-dining">席位已確認</span></div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>L'Opale Noire</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Palace+of+Versailles" target="_blank" class="btn-map">📍 凡爾賽宮 Palace of Versailles</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Ore+Ducasse+Chateau+de+Versailles" target="_blank" class="btn-map">📍 Ore - Ducasse 餐廳</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 巴黎</span>
-                <div class="day-badge">📅 Day 7 : 29/07 (三)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>下午於老佛爺/春天百貨購物 ➡ 傍晚瑪黑區精品獨立店、香水屋血拼 ➡ 20:30 步行至三星餐廳。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>晚餐 20:30 於米其林三星 L'Ambroisie 享用 (<span style="color:#e74c3c; font-weight:bold;">⚠️ 須穿著正裝</span>)。 <span class="badge badge-dining">席位已確認</span></div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>L'Opale Noire</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Galeries+Lafayette+Paris" target="_blank" class="btn-map">📍 老佛爺百貨 Galeries Lafayette</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Le+Marais+Paris" target="_blank" class="btn-map">📍 瑪黑區 Le Marais</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=LAmbroisie+Paris" target="_blank" class="btn-map">📍 L'Ambroisie 餐廳</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 巴黎 ➡ 郊區</span>
-                <div class="day-badge">📅 Day 8 : 30/07 (四)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>中午享用米其林大餐 ➡ 下午收拾行李，移防至巴黎郊區酒店 Moxy ➡ 晚上逛 Val d'Europe。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>午餐 12:00 於米其林一星 La Poule au Pot 享用。 <span class="badge badge-dining">席位已確認</span></div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Moxy Paris Val d’Europe</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=La+Poule+au+Pot+Paris" target="_blank" class="btn-map">📍 La Poule au Pot 餐廳</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Moxy+Paris+Val+dEurope" target="_blank" class="btn-map">📍 Moxy Paris Val d’Europe</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Val+dEurope" target="_blank" class="btn-map">📍 Val d'Europe 購物中心</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 迪士尼雙園</span>
-                <div class="day-badge">📅 Day 9 : 31/07 (五)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>巴黎迪士尼雙樂園全日遊 (Disneyland Park & Walt Disney Studios Park)。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>樂園內餐飲自理。</div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Moxy Paris Val d’Europe</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Disneyland+Paris" target="_blank" class="btn-map">📍 巴黎迪士尼樂園</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 巴黎 Outlet</span>
-                <div class="day-badge">📅 Day 10 : 01/08 (六)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>La Vallée Village Outlet 一整天精品大血拼 ➡ 晚上打包行李。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>午餐於 Outlet 內享用輕食。</div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Moxy Paris Val d’Europe</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=La+Vallee+Village" target="_blank" class="btn-map">📍 La Vallée Village Outlet</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 巴黎 ➡ 尼斯</span>
-                <div class="day-badge">📅 Day 11 : 02/08 (日)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>05:00 搭乘 Uber 赴戴高樂機場 ➡ 07:35 飛往尼斯 (09:10抵達) ➡ Check-in ➡ 搭 Uber (約20分鐘) 赴埃茲懸崖山城 (Èze-Village) ➡ 傍晚回尼斯英國人大道看日落。</div>
-                <div class="section-item"><span class="bold-label">✈️ 機票預約：</span>07:35 易捷航空 U24527 (CDG T2D ➡ NCE T2) <span class="badge badge-flight">機票已確認</span></div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>晚餐於老城區享用 Peixes (新派地中海海鮮) 或 Le Safari (傳統尼斯菜)。</div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Best Western Plus Hotel Alba</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Charles+de+Gaulle+Airport+T2D" target="_blank" class="btn-map">📍 戴高樂機場 CDG T2D</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Nice+Cote+dAzur+Airport" target="_blank" class="btn-map">📍 尼斯藍色海岸機場 NCE</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Eze+Village+France" target="_blank" class="btn-map">📍 埃茲懸崖山城 Èze</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Promenade+des+Anglais+Nice" target="_blank" class="btn-map">📍 尼斯英國人大道</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 芒通 ＋ 🇲🇨 摩納哥</span>
-                <div class="day-badge">📅 Day 12 : 03/08 (一)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>上午搭火車 (35分鐘) 赴芒通 (Menton) 拍彩色法式房子與海景步道 ➡ 下午搭火車 (10分鐘) 赴摩納哥 (Monaco) 參觀皇宮、親王宮廣場、蒙特卡洛大賭場、F1賽道與超級遊艇碼頭 ➡ 傍晚搭火車 (20分鐘) 輕鬆回尼斯。</div>
-                <div class="section-item"><span class="bold-label">🚆 交通指南：</span>SNCF TER 特快火車 (隨到隨買，車程 10-35 分鐘)。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>午餐於 Menton 享用海邊海鮮燉飯 / 晚餐於尼斯市中心小酒館自理。</div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Best Western Plus Hotel Alba</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Menton+France" target="_blank" class="btn-map">📍 芒通 Menton</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Palais+princier+de+Monaco" target="_blank" class="btn-map">📍 摩納哥親王宮</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Casino+de+Monte-Carlo" target="_blank" class="btn-map">📍 蒙特卡洛大賭場</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 昂蒂布 ＋ 坎城</span>
-                <div class="day-badge">📅 Day 13 : 04/08 (二)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>上午搭火車 (15分鐘) 赴昂蒂布 (Antibes) 逛老城普羅旺斯集市、畢卡索博物館、富豪碼頭 ➡ 下午搭火車 (10分鐘) 赴坎城 (Cannes) 於影展紅毯 (Palais des Festivals) 打卡、La Croisette 海濱大道散步，並於 Le Suquet 老城看夕陽 ➡ 傍晚搭火車 (30分鐘) 回尼斯。</div>
-                <div class="section-item"><span class="bold-label">🚆 交通指南：</span>SNCF TER 特快火車 (隨到隨買，車程 10-30 分鐘)。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>午餐於 Antibes 老城米其林推薦海鮮餐廳 / 晚餐於 Cannes 蔚藍海岸海景餐廳。</div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>Best Western Plus Hotel Alba</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Vieille+Ville+Antibes" target="_blank" class="btn-map">📍 昂蒂布老城 Antibes</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Palais+des+Festivals+et+des+Congres+Cannes" target="_blank" class="btn-map">📍 坎城影展紅毯</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Boulevard+de+la+Croisette+Cannes" target="_blank" class="btn-map">📍 坎城海濱大道</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇫🇷 尼斯 ➡ 🇬🇧 倫敦</span>
-                <div class="day-badge">📅 Day 14 : 05/08 (三)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>中午從尼斯搭機飛回倫敦 ➡ 下午前往 Harrods 或 Liberty 百貨補貨。</div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>晚餐 20:30 於熱門炭烤 Elliot's - Borough Market 享用 (確認號: 10497)。 <span class="badge badge-dining">席位已確認</span></div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>The Derby London City, Curio Collection by Hilton</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Harrods+London" target="_blank" class="btn-map">📍 Harrods 百貨</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Elliots+Borough+Market" target="_blank" class="btn-map">📍 Elliot's - Borough Market</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Derby+London+City" target="_blank" class="btn-map">📍 The Derby London City 酒店</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">🇬🇧 倫敦</span>
-                <div class="day-badge">📅 Day 15 : 06/08 (四)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>下午柯芬園悠閒街拍 ➡ 16:30 搶登 Horizon 22 看日落前全景 ➡ 19:30 觀賞壓軸音樂劇《歌劇魅影》。</div>
-                <div class="section-item"><span class="bold-label">🎟️ 今日預約：</span>16:30 Horizon 22 觀景台 ｜ 19:30 《歌劇魅影》 @ His Majesty's Theatre (座位: Royal Circle D4, D5) <span class="badge badge-activity">門票已確認</span></div>
-                <div class="section-item"><span class="bold-label">🍽️ 膳食安排：</span>晚餐於劇前高效率自理。</div>
-                <div class="section-item"><span class="bold-label">🏨 今晚住宿：</span>The Derby London City, Curio Collection by Hilton</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Covent+Garden+London" target="_blank" class="btn-map">📍 柯芬園 Covent Garden</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Horizon+22+London" target="_blank" class="btn-map">📍 Horizon 22 觀景台</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=His+Majestys+Theatre+London" target="_blank" class="btn-map">📍 His Majesty's Theatre (歌劇魅影)</a>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <span class="day-city">✈️ 倫敦 ➡ 返港</span>
-                <div class="day-badge">📅 Day 16 : 07/08 (五)</div>
-                <div class="section-item"><span class="bold-label">🎯 每日行程：</span>早上搭乘 Elizabeth Line 赴希斯洛機場 ➡ 辦理精品退稅 ➡ 航機上啟程返港。</div>
-                <div class="section-item"><span class="bold-label">🚆 交通指南：</span>由倫敦 Liverpool Street 車站搭乘 Elizabeth Line 直達希斯洛機場 T4 (約40分鐘)。</div>
-                <div class="map-link-box">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Liverpool+Street+Station+London" target="_blank" class="btn-map">📍 Liverpool Street 車站</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Heathrow+Airport+Terminal+4" target="_blank" class="btn-map">📍 希斯洛機場 T4</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div id="booking-view" class="tab-content" style="display: none;">
+        <!-- 📑 分頁 1：待辦提示與交通 -->
+        <section id="tab-1" class="tab-content space-y-5">
             
-            <div class="card">
-                <h3 class="card-title">📋 網站基本資訊</h3>
-                <ul>
-                    <li><span class="bold-label">行程名稱：</span>2026 英法雙國16天深度遊</li>
-                    <li><span class="bold-label">旅遊日期：</span>2026年7月23日至8月7日</li>
-                    <li><span class="bold-label">旅客姓名：</span>Lok Si Ho 與 Hei Tung Lam</li>
-                </ul>
+            <!-- 🔰 新手交通懶人包 (全新加入) -->
+            <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-teal-200">
+                <h3 class="font-bold text-teal-600 text-lg flex items-center gap-2"><span>🔰</span> 歐洲交通新手村 (秒懂指南)</h3>
+                <div class="mt-3 space-y-3 text-sm text-gray-700">
+                    <div class="bg-teal-50 p-4 rounded-2xl">
+                        <p class="font-bold text-teal-800 text-base mb-1">🇬🇧 倫敦 (最簡單，全程逼卡)</p>
+                        <p>完全不用買實體車票！進出地鐵站，只要拿出手機刷 <b>Apple Pay / Google Pay 或實體信用卡</b> 就可以了。倫敦地鐵叫 Tube，每一條線都有專屬顏色（例如紅色的 Central 線），看著顏色指標走絕對不會迷路！</p>
+                    </div>
+                    <div class="bg-teal-50 p-4 rounded-2xl">
+                        <p class="font-bold text-teal-800 text-base mb-1">🇫🇷 巴黎 (分成市區與郊區)</p>
+                        <ul class="space-y-1 list-disc ml-4">
+                            <li><b>市區地鐵 (Metro)：</b>用數字標示 (如 1號線)，建議去地鐵站人工櫃台買一張 <b>Navigo Easy</b> 實體空卡來儲值幾張單程票 (Ticket t+)。</li>
+                            <li><b>郊區快線 (RER)：</b>用英文字母標示 (如去迪士尼要搭 RER A 線)，跨區不能用市區單程票，<b>必須在售票機買「點對點的實體紙本票」</b>喔！</li>
+                        </ul>
+                    </div>
+                    <div class="bg-teal-50 p-4 rounded-2xl">
+                        <p class="font-bold text-teal-800 text-base mb-1">🏖️ 南法 (搭火車像搭捷運)</p>
+                        <p>南法的跨城鎮移動都靠 <b>SNCF TER (區間車)</b>，班次密集且不用對號入座。只要在手機下載 <b>SNCF Connect</b> App，輸入起訖站並刷卡買票，上車遇到查票員秀出 App 裡的 QR Code 就行了。</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <h3 class="card-title">✈️ 航班資訊 (Flights)</h3>
-                <ul>
-                    <li>🛫 <strong>去程 (香港 ➡ 倫敦)</strong>：阿提哈德航空 (Etihad Airways) <span class="badge badge-flight">訂位代號: 9BDPST</span><br>
-                        • EY 871: 2026/07/22 20:10 香港 (HKG) ➡ 07/23 00:25 阿布達比 (AUH) (Boeing 787-9)<br>
-                        • EY 61: 2026/07/23 02:20 阿布達比 (AUH) ➡ 07/23 07:00 倫敦希斯洛 (LHR T4) (Airbus A380-800)<br>
-                        • 行李：每人託運 30kg
-                    </li>
-                    <li style="margin-top: 1.2rem;">🛬 <strong>內陸線 (巴黎 ➡ 尼斯)</strong>：易捷航空 (easyJet U24527) <span class="badge badge-flight">訂位代號: KCZX1B5</span><br>
-                        • 2026/08/02 07:35 巴黎戴高樂 (CDG T2D) ➡ 09:10 尼斯藍色海岸 (NCE T2)<br>
-                        • 行李：每人 15kg 隨身物品 + 23kg 託運行李 (約 32 吋)
-                    </li>
-                    <li style="margin-top: 1.2rem;">🛫 <strong>回程 (倫敦 ➡ 香港)</strong>：8月7日早上搭乘 Elizabeth Line 前往希斯洛機場準備啟程返港。</li>
-                </ul>
+            <!-- 緊急卡片 -->
+            <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-red-200 relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 text-6xl opacity-20">😱</div>
+                <h3 class="font-bold text-red-500 text-lg flex items-center gap-2"><span>🔴</span> 萬分緊急小任務！</h3>
+                <div class="mt-3 bg-red-50 p-4 rounded-2xl text-sm text-red-700 leading-relaxed">
+                    <p class="font-bold">1. 飛倫敦的機票還沒買呀！</p>
+                    <p class="mb-3">快去訂 8/5 從尼斯 (NCE) 飛倫敦 (LHR) 的機票！推薦 12:00 - 15:00 起飛的班次。</p>
+                    <p class="font-bold">2. 迪士尼門票！</p>
+                    <p>7/31 巴黎迪士尼雙樂園，記得買票並預約入園！</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📑 分頁 2：航班與跨國高鐵 -->
+        <section id="tab-2" class="tab-content hidden space-y-5">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-pink-100">
+                <h3 class="font-bold text-cute-pink text-lg mb-4 flex items-center gap-2">🛫 啟程！(香港 ➡ 倫敦)</h3>
+                <div class="bg-pink-50 p-4 rounded-2xl text-sm space-y-2 mb-4 text-gray-700">
+                    <p>✨ <strong>阿聯酋水晶航空</strong> (EY 871 轉 EY 61)</p>
+                    <p>🎫 預訂編號：<span class="font-mono font-bold text-cute-pink">9BDPST</span></p>
+                    <p>⏰ 7/22 20:10 (HKG) ➡ 7/23 07:00 抵達 (LHR T4)</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h3 class="card-title">🏨 住宿資訊 (Hotels)</h3>
-                <ul>
-                    <li>🇬🇧 <strong>倫敦 (7/23 - 7/26，3晚)</strong>：Hotel Indigo London K West Shepherd's Bush <span class="badge badge-hotel">確認碼 #29813813</span></li>
-                    <li>🇫🇷 <strong>巴黎市中心 (7/26 - 7/30，4晚)</strong>：L'Opale Noire</li>
-                    <li>🇫🇷 <strong>巴黎郊區 (7/30 - 8/2，3晚)</strong>：Moxy Paris Val d’Europe</li>
-                    <li>🇫🇷 <strong>尼斯 (8/2 - 8/5，3晚)</strong>：Best Western Plus Hotel Alba</li>
-                    <li>🇬🇧 <strong>倫敦 (8/5 - 8/7，2晚)</strong>：The Derby London City, Curio Collection by Hilton</li>
-                </ul>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-pink-100">
+                <h3 class="font-bold text-cute-pink text-lg mb-4 flex items-center gap-2">✈️ 飛向蔚藍海岸 (巴黎 ➡ 尼斯)</h3>
+                <div class="bg-pink-50 p-4 rounded-2xl text-sm space-y-2 mb-4 text-gray-700">
+                    <p>✨ <strong>easyJet U24527</strong> (Trip.com)</p>
+                    <p>🎫 訂單編號：1359046893827717</p>
+                    <p>⏰ 8/2 07:35 (CDG T2D) ➡ 09:10 (NCE T2)</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h3 class="card-title">🚆 跨國與跨城交通 (Transportation)</h3>
-                <ul>
-                    <li>🚄 <strong>倫敦至巴黎</strong>：2026/07/26 歐洲之星 (Eurostar Snap)，出發時間介於 13:00 - 20:31 之間 (St Pancras Int'l ➡ Gare du Nord)。</li>
-                    <li>🚗 <strong>巴黎市區至機場</strong>：2026/08/02 05:00 預約 Uber 由 Moxy 酒店前往戴高樂機場 CDG T2D。</li>
-                    <li>🚂 <strong>南法沿海交通</strong>：8/3 及 8/4 搭乘 SNCF TER 特快火車前往芒通 (Menton)、摩納哥 (Monaco)、昂蒂布 (Antibes) 與坎城 (Cannes)。</li>
-                </ul>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-pink-100">
+                <h3 class="font-bold text-cute-pink text-lg mb-4 flex items-center gap-2">🚄 浪漫特快車 (倫敦 ➡ 巴黎)</h3>
+                <div class="bg-pink-50 p-4 rounded-2xl text-sm space-y-2 mb-4 text-gray-700">
+                    <p>✨ <strong>Eurostar 歐洲之星</strong></p>
+                    <p>⏰ 7/26 出發，13:00 - 20:31 之間。</p>
+                </div>
             </div>
+        </section>
 
-            <div class="card">
-                <h3 class="card-title">🍽️ 餐廳預約確認 (Dining)</h3>
-                <ul>
-                    <li>🇬🇧 <strong>倫敦 KOL London (米其林一星)</strong>：7月24日 20:30 | 2人 (預約號 8XNDJST76492)</li>
-                    <li>🇫🇷 <strong>巴黎 Ore - Ducasse au château de Versailles</strong>：7月28日 12:30 | 2人 (快速通道入宮)</li>
-                    <li>🇫🇷 <strong>巴黎 L'Ambroisie (米其林三星)</strong>：7月29日 20:30 | 2人 (<span style="color:#e74c3c; font-weight:bold;">⚠️ 必須正裝👔</span>)</li>
-                    <li>🇫🇷 <strong>巴黎 La Poule au Pot (米其林一星)</strong>：7月30日 12:00 | 2人</li>
-                    <li>🇬🇧 <strong>倫敦 Elliot's - Borough Market</strong>：8月5日 20:30 | 2人 <span class="badge badge-dining">確認號 10497</span></li>
-                </ul>
-            </div>
+        <!-- 📑 分頁 3：住宿總覽 -->
+        <section id="tab-3" class="tab-content hidden space-y-5">
+            <p class="text-sm text-cute-pink font-bold text-center mb-2">點擊按鈕可以直接開啟 Google Maps 導航喔！</p>
+            <div id="hotel-container" class="space-y-4"></div>
+        </section>
 
-            <div class="card">
-                <h3 class="card-title">🎭 景點與活動門票 (Activities)</h3>
-                <ul>
-                    <li>🎵 <strong>音樂劇《Matilda The Musical》</strong>：7月23日 14:00 於 Cambridge Theatre</li>
-                    <li>🎨 <strong>展覽《Mundo Pixar Experience》</strong>：7月24日 11:00 於 Wembley</li>
-                    <li>🏛️ <strong>觀景台《Horizon 22》</strong>：8月6日 16:30 登高看日落全景</li>
-                    <li>🔮 <strong>音樂劇《歌劇魅影 (Phantom of the opera)》</strong>：8月6日 19:30 於 His Majesty's Theatre (座位：Royal Circle D4, D5，訂購人: Hei Tung Lam，訂單號: 26199K-4EVJ42DU6C)</li>
-                </ul>
-            </div>
+        <!-- 📑 分頁 4：餐廳與門票預訂 -->
+        <section id="tab-4" class="tab-content hidden">
+             <div id="dining-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+        </section>
 
-        </div>
-    </div>
+        <!-- 📑 分頁 5：每日行程與交通 -->
+        <section id="tab-5" class="tab-content hidden space-y-4">
+            <p class="text-sm text-center text-cute-pink font-bold mb-4 bg-white py-2 rounded-full shadow-sm border border-pink-100">
+                👇 點擊展開每天的【超詳細防呆交通指南】！
+            </p>
+            <div id="itinerary-container" class="space-y-4"></div>
+        </section>
 
+    </main>
+
+    <!-- 互動與資料渲染邏輯 -->
     <script>
-        function openTab(evt, tabId) {
-            var i, tabcontent, tablinks;
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('border-2', 'border-pink-100', 'bg-white', 'text-cute-text');
+                el.style = '';
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('border-2', 'border-pink-100', 'bg-white', 'text-cute-text');
+        }
+
+        // --- 飯店資料 ---
+        const hotels = [
+            { date: "7/23 - 7/26 (3晚)", city: "倫敦", name: "Hotel Indigo London K West", info: "IHG 官網 | 確認編號: 29813813", map: "Hotel+Indigo+London+K+West" },
+            { date: "7/26 - 7/30 (4晚)", city: "巴黎", name: "L'Opale Noire", info: "Agoda 預訂", map: "L'Opale+Noire+Paris" },
+            { date: "7/30 - 8/2 (3晚)", city: "巴黎郊區", name: "Moxy Paris Val d’Europe", info: "官網 | 確認編號: #96919012", map: "Moxy+Paris+Val+d’Europe" },
+            { date: "8/2 - 8/5 (3晚)", city: "尼斯", name: "Best Western Plus Hotel Alba", info: "Trip.com 1359045575411928 | PIN: 3819", map: "Best+Western+Plus+Hotel+Alba+Nice" },
+            { date: "8/5 - 8/7 (2晚)", city: "倫敦", name: "The Derby London City", info: "Trip.com 1359045348331841 | PIN: 3894", map: "The+Derby+London+City+Curio+Collection+by+Hilton" }
+        ];
+        
+        document.getElementById('hotel-container').innerHTML = hotels.map(h => `
+            <div class="bg-white p-5 rounded-3xl shadow-sm border-2 border-pink-100 flex flex-col sm:flex-row justify-between gap-4 items-center hover:shadow-md transition">
+                <div class="w-full">
+                    <span class="text-xs font-bold text-white bg-cute-pink px-3 py-1 rounded-full">${h.date} • ${h.city}</span>
+                    <h3 class="font-bold text-lg mt-3 text-cute-dark">${h.name}</h3>
+                    <p class="text-sm text-gray-500 mt-1">${h.info}</p>
+                </div>
+                <a href="https://maps.google.com/?q=${h.map}" target="_blank" class="shrink-0 w-full sm:w-auto text-center px-6 py-2.5 bg-gradient-to-r from-cute-pink to-rose-400 text-white text-sm font-bold rounded-full shadow-md hover:scale-105 transition">📍 帶我去</a>
+            </div>
+        `).join('');
+
+        // --- 餐廳與門票資料 ---
+        const dining = [
+            { name: "Matilda (音樂劇)", tag: "座位: J17, J18", icon: "🎭", info: "7/23 14:00<br>Cambridge Theatre", map: "Cambridge+Theatre+London" },
+            { name: "KOL London", tag: "米其林一星", icon: "🇬🇧", info: "7/24 20:30 (2人)<br>SevenRooms | 8XNDJST76492", map: "KOL+London" },
+            { name: "Ore - Ducasse", tag: "凡爾賽宮內", icon: "🇫🇷", info: "7/28 12:30 (2人)<br>Zenchef", map: "Ore+Ducasse+au+chateau+de+Versailles" },
+            { name: "L'Ambroisie", tag: "米其林三星 (須正裝)", icon: "🇫🇷", info: "7/29 20:30 (2人)<br>Zenchef", map: "L'Ambroisie+Paris", alert: true },
+            { name: "La Poule au Pot", tag: "米其林一星", icon: "🇫🇷", info: "7/30 12:00 (2人)<br>Zenchef", map: "La+Poule+au+Pot+Paris" },
+            { name: "Elliot's", tag: "Borough Market", icon: "🇬🇧", info: "8/5 20:30 (2人)<br>OpenTable | 10497", map: "Elliot's+Borough+Market" },
+            { name: "歌劇魅影 (音樂劇)", tag: "Royal Circle D4, D5", icon: "🎭", info: "8/6 19:30<br>LW Tickets", map: "His+Majesty's+Theatre+London" }
+        ];
+
+        document.getElementById('dining-container').innerHTML = dining.map(d => `
+            <div class="bg-white p-5 rounded-3xl shadow-sm border-2 ${d.alert ? 'border-yellow-300 bg-yellow-50' : 'border-blue-100'} flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-cute-dark">${d.icon} ${d.name}</h3>
+                    </div>
+                    <span class="inline-block text-xs font-bold bg-white border border-gray-200 text-gray-600 px-2 py-1 rounded-lg mb-3">${d.tag}</span>
+                    <p class="text-sm text-gray-600 mb-4">${d.info}</p>
+                </div>
+                <a href="https://maps.google.com/?q=${d.map}" target="_blank" class="text-center px-4 py-2 bg-gradient-to-r from-blue-300 to-blue-400 text-white text-sm font-bold rounded-full shadow hover:scale-105 transition">📍 導航</a>
+            </div>
+        `).join('');
+
+        // --- ★ 全新防呆版交通指南 ★ ---
+        const itineraryData = [
+            { day: "Day 1 (23/07 四)", city: "🇬🇧 倫敦", content: "07:00 落地 ➡ 📍 [Hotel Indigo] 寄行李 ➡ 14:00 音樂劇《Matilda》(📍 [Cambridge Theatre]) ➡ 回酒店。",
+              transport: "✈️ <b>【機場 ➡ 飯店】</b><br><span class='step-num'>1</span> 在機場找紫色的指標 <b>Elizabeth line (伊莉莎白線)</b>。<br><span class='step-num'>2</span> 直接拿 Apple Pay / 信用卡刷閘門進站。<br><span class='step-num'>3</span> 搭到 [Ealing Broadway] 站下車。<br><span class='step-num'>4</span> 不出站，順著指標走到紅色的 <b>Central line (中央線)</b> 月台。<br><span class='step-num'>5</span> 搭到 [Shepherd's Bush] 站，出站走 5 分鐘就到飯店囉！<br><br>🎭 <b>【去劇院】</b><br><span class='step-num'>1</span> 從飯店走去搭紅色的 <b>Central line</b>。<br><span class='step-num'>2</span> 搭到 [Holborn] 站，出站走 5 分鐘即可。" },
             
-            // 隱藏所有分頁內容
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-                tabcontent[i].classList.remove("active");
+            { day: "Day 2 (24/07 五)", city: "🇬🇧 倫敦", content: "11:00 皮克斯展(📍 [Wembley]) ➡ 13:00 📍 [Borough Market] ➡ 🍽️ 20:30 米其林一星 KOL London。",
+              transport: "🎟️ <b>【去展覽】</b><br><span class='step-num'>1</span> 從飯店搭橘色標誌的 <b>Overground (地上鐵)</b>。<br><span class='step-num'>2</span> 在 [Willesden Junction] 站下車。<br><span class='step-num'>3</span> 原站轉乘棕色的 <b>Bakerloo line</b>，搭到 [Wembley Central] 出站。<br><br>🥩 <b>【去市集】</b><br><span class='step-num'>1</span> 從溫布利搭銀灰色的 <b>Jubilee line</b>。<br><span class='step-num'>2</span> 不用轉車！一路坐到 [London Bridge] 站下車，旁邊就是市集。" },
+            
+            { day: "Day 3 (25/07 六)", city: "🏖️ 布萊頓", content: "📍 [Brighton Beach] 一日遊 ➡ The Lanes 淘古著 ➡ 午餐：The Salt Room。",
+              transport: "🚆 <b>【倫敦 ➡ 布萊頓】</b><br><span class='step-num'>1</span> 到市區的 [London Bridge] 或 [Victoria] 火車站。<br><span class='step-num'>2</span> 直接用 Apple Pay 刷卡進站，尋找前往 <b>Brighton</b> 方向的火車。<br><span class='step-num'>3</span> 上車補眠約 1 小時直達，出站後景點都在走路範圍內！" },
+            
+            { day: "Day 4 (26/07 日)", city: "🚄 倫敦 ➡ 巴黎", content: "搭 Eurostar 赴巴黎 ➡ 入住 📍 [L'Opale Noire]。",
+              transport: "🚄 <b>【搭歐洲之星】</b><br><span class='step-num'>1</span> 搭地鐵到 [St Pancras International] 車站。<br><span class='step-num'>2</span> ⚠️ <b>極度重要：</b>這是跨國列車，像搭飛機一樣要過海關，務必提早 90 分鐘到車站排隊！<br><br>🇫🇷 <b>【抵達巴黎去飯店】</b><br><span class='step-num'>1</span> 在 [Gare du Nord (巴黎北站)] 下車，這裡人多且雜，<b>請把包包抱在胸前防小偷！</b><br><span class='step-num'>2</span> 找到地鐵 (Metro) 標誌，在售票機買單程票，搭 4 號或 5 號線往市區飯店。" },
+            
+            { day: "Day 5 (27/07 一)", city: "🇫🇷 巴黎", content: "📍 [Louvre] ➡ 香榭麗舍購物 ➡ 傍晚 📍 [Arc de Triomphe] 頂看日落。",
+              transport: "🚇 <b>【今日主力：黃色的地鐵 1 號線】</b><br>今天的景點全部都在地鐵 <b>1 號線</b>上，非常簡單！<br>• 去羅浮宮：搭到 [Palais Royal - Musée du Louvre] 站。<br>• 去香榭麗舍：搭到 [George V] 站。<br>• 去凱旋門：搭到 [Charles de Gaulle - Étoile] 站。<br>點對點只要搭 5-10 分鐘就能到！" },
+            
+            { day: "Day 6 (28/07 二)", city: "🇫🇷 巴黎", content: "凡爾賽宮深度遊 ➡ 🍽️ 12:30 Ore - Ducasse。",
+              transport: "👑 <b>【去凡爾賽宮】</b><br><span class='step-num'>1</span> 凡爾賽宮在郊區，不能用市區單程票！請在售票機買前往 <b>Versailles Château Rive Gauche</b> 的實體紙本票。<br><span class='step-num'>2</span> 尋找黃色的 <b>RER C 線</b>月台。<br><span class='step-num'>3</span> 坐到終點站下車，出站跟著人群（大家都是要去參觀的）走 10 分鐘就到大門口了。" },
+            
+            { day: "Day 7 (29/07 三)", city: "🇫🇷 巴黎", content: "老佛爺/春天百貨 ➡ 瑪黑區血拼 ➡ 🍽️ 20:30 L'Ambroisie。",
+              transport: "🛍️ <b>【市區血拼移動】</b><br><span class='step-num'>1</span> 逛完老佛爺百貨，到旁邊的 [Chaussée d'Antin] 站。<br><span class='step-num'>2</span> 搭粉紅色的 <b>地鐵 7 號線</b> 轉黃色的 <b>1 號線</b>。<br><span class='step-num'>3</span> 在 [St-Paul] 站下車就是瑪黑區。<br><span class='step-num'>4</span> 晚上吃米其林三星不用搭車，從瑪黑區走路 5 分鐘就到孚日廣場的餐廳了。" },
+            
+            { day: "Day 8 (30/07 四)", city: "🇫🇷 巴黎", content: "🍽️ 12:00 米其林一星 ➡ 下午移防 📍 [Moxy Val d'Europe]。",
+              transport: "🧳 <b>【市區搬家去郊區】</b><br><span class='step-num'>1</span> 帶著行李到市區最大的轉運站 [Châtelet - Les Halles]。<br><span class='step-num'>2</span> 在售票機買前往 <b>Val d'Europe</b> 的紙本車票。<br><span class='step-num'>3</span> 尋找紅色的 <b>RER A 線</b>，確認螢幕上顯示往 Marne-la-Vallée 方向的車才上。<br><span class='step-num'>4</span> 車程約 40 分鐘，在 [Val d'Europe] 站下車，走 5 分鐘到飯店。" },
+            
+            { day: "Day 9 (31/07 五)", city: "🏰 迪士尼", content: "📍 [Disneyland Paris] 雙樂園一整天。",
+              transport: "🎢 <b>【去迪士尼】</b><br>超級近！<br><span class='step-num'>1</span> 走到飯店旁的 Val d'Europe 車站。<br><span class='step-num'>2</span> 買單程票，搭紅色的 <b>RER A 線</b> 往迪士尼方向。<br><span class='step-num'>3</span> <b>只要搭 1 站</b>（約 3 分鐘），在終點站 [Marne-la-Vallée Chessy] 下車，一出站就是樂園大門口！" },
+            
+            { day: "Day 10 (01/08 六)", city: "🛍️ 巴黎郊區", content: "📍 [La Vallée Village] 精品血拼。",
+              transport: "🚶 <b>【去購物村】</b><br>完全不用搭車！La Vallée Village Outlet 就在飯店旁邊，當作散步走 10-15 分鐘就會到了。<br>💡 小建議：如果買太多大包小包拿不回來，直接用手機叫一台 Uber，3 分鐘就載你回到飯店門口！" },
+            
+            { day: "Day 11 (02/08 日)", city: "✈️ 巴黎 ➡ 尼斯", content: "搭機飛尼斯 ➡ 入住 📍 [Best Western] ➡ 赴 📍 [Èze-Village]。",
+              transport: "✈️ <b>【清晨去戴高樂機場 CDG】</b><br>清晨 5 點沒有大眾運輸，請務必前一晚先在 <b>Uber App</b> 預約好大車。<br><br>🚊 <b>【尼斯機場 ➡ 飯店】</b><br>尼斯機場一出來，直接搭乘地面的 <b>輕軌 (Tram) L2 線</b>，搭到 [Jean Médecin] 站下車，走路 3 分鐘到飯店。<br><br>🚌 <b>【尼斯 ➡ 鷲巢村 Èze】</b><br>在尼斯的 Vauban 公車站，搭乘 <b>82 號公車</b> 上山，大約 45 分鐘抵達山頂小鎮。" },
+            
+            { day: "Day 12 (03/08 一)", city: "🍋 南法", content: "火車赴 📍 [Menton] ➡ 📍 [Monaco] ➡ 傍晚回尼斯。",
+              transport: "📱 <b>【全日南法區間車 SNCF TER】</b><br>南法搭火車很像搭捷運。<br><span class='step-num'>1</span> 打開手機裡的 <b>SNCF Connect App</b>。<br><span class='step-num'>2</span> 輸入起點尼斯 (Nice)，終點芒通 (Menton)，線上刷卡買票。<br><span class='step-num'>3</span> 到尼斯火車站看螢幕，隨便上一班往那個方向的區間車即可（車程僅 35 分鐘）。<br>後續去摩納哥 (Monaco) 也是一樣的操作方式！" },
+            
+            { day: "Day 13 (04/08 二)", city: "🏖️ 南法", content: "火車赴 📍 [Antibes] ➡ 📍 [Cannes] ➡ 傍晚回尼斯。",
+              transport: "📱 <b>【全日南法區間車 SNCF TER】</b><br>跟昨天一模一樣，打開 App 買票！今天往西邊走。<br><span class='step-num'>1</span> 尼斯 ➡ 昂蒂布 (Antibes)：車程約 20 分鐘。<br><span class='step-num'>2</span> 昂蒂布 ➡ 坎城 (Cannes)：車程約 15 分鐘。<br><span class='step-num'>3</span> 傍晚再從坎城搭車回尼斯 (約 35 分鐘)。" },
+            
+            { day: "Day 14 (05/08 三)", city: "✈️ 尼斯 ➡ 倫敦", content: "飛回倫敦 ➡ 入住 📍 [The Derby] ➡ Harrods ➡ 🍽️ 20:30 Elliot's。",
+              transport: "✈️ <b>【倫敦機場 ➡ 飯店】</b><br><span class='step-num'>1</span> 在機場循指標尋找紫色的 <b>Elizabeth line</b>。<br><span class='step-num'>2</span> 刷 Apple Pay 進站，搭到 [Farringdon] 或 [Liverpool Street] 站下車。<br><span class='step-num'>3</span> 這兩站離飯店都很近，走路或轉一站地鐵就能到。<br><br>🛍️ <b>【市區移動】</b><br>去 Harrods 百貨只要搭深藍色的 <b>Piccadilly line</b> 到 [Knightsbridge] 站出站即是。" },
+            
+            { day: "Day 15 (06/08 四)", city: "🇬🇧 倫敦", content: "柯芬園 ➡ 16:30 📍 [Horizon 22] ➡ 🎫 19:30 歌劇魅影。",
+              transport: "🚇 <b>【市區輕鬆遊】</b><br>這天完全在市中心活動，打開 Google Maps 輸入目的地，跟著指示搭紅線 (Central)、黑線 (Northern) 或深藍線 (Piccadilly)，全程刷 Apple Pay 就能搞定所有的行程！" },
+            
+            { day: "Day 16 (07/08 五)", city: "✈️ 返港", content: "搭 Elizabeth Line 赴 LHR 機場退稅 ➡ 返港。",
+              transport: "🚆 <b>【飯店 ➡ 希斯洛機場 LHR】</b><br>超簡單的最後一趟路！<br><span class='step-num'>1</span> 從飯店附近的 [Farringdon] 或 [Liverpool Street] 車站進站。<br><span class='step-num'>2</span> 找到紫色的 <b>Elizabeth Line</b> 月台，確認螢幕顯示前往 <b>Heathrow Airport</b>。<br><span class='step-num'>3</span> 上車放好行李，約 45 分鐘直達機場航廈，完全不用轉車！" }
+        ];
+
+        const container = document.getElementById('itinerary-container');
+        
+        itineraryData.forEach((item, index) => {
+            let processedContent = item.content.replace(/📍 \[([^\]]+)\]/g, 
+                `<a href="https://maps.google.com/?q=$1" target="_blank" class="inline-flex items-center gap-1 bg-pink-50 text-cute-pink font-bold px-2 py-0.5 rounded-lg border border-pink-200 hover:bg-pink-100 transition mx-1 text-xs">📍 $1</a>`
+            );
+
+            const html = `
+                <div class="bg-white rounded-3xl shadow-sm border-2 border-pink-100 overflow-hidden transition-all duration-300">
+                    <button onclick="toggleAccordion('acc-${index}')" class="w-full px-5 py-4 flex justify-between items-center text-left hover:bg-cute-bg transition">
+                        <div class="flex items-center gap-3">
+                            <span class="font-bold text-cute-pink text-lg">${item.day}</span>
+                            <span class="text-xs bg-cute-yellow text-orange-600 px-3 py-1 rounded-full font-bold">${item.city}</span>
+                        </div>
+                        <svg id="icon-acc-${index}" class="w-6 h-6 text-pink-300 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    
+                    <div id="acc-${index}" class="hidden px-5 py-5 border-t-2 border-pink-50 text-gray-700 text-sm leading-loose">
+                        <p class="mb-4">${processedContent}</p>
+                        <div class="bg-blue-50/60 border-2 border-blue-100 rounded-2xl p-5 mt-2 relative">
+                            <span class="absolute -top-3 left-4 bg-white border-2 border-blue-200 text-blue-600 font-bold px-3 py-1 rounded-full text-xs shadow-sm flex items-center gap-1">🚌 交通任意門 (防呆版)</span>
+                            <div class="text-blue-900 text-sm leading-relaxed mt-2 space-y-2">
+                                ${item.transport}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += html;
+        });
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if(content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
             }
-            
-            // 取消所有按鈕 active 狀態
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            
-            // 顯示目標分頁並設為 active
-            var targetTab = document.getElementById(tabId);
-            if (targetTab) {
-                targetTab.style.display = "block";
-                targetTab.classList.add("active");
-            }
-            
-            // 設置按鈕 active
-            if (evt && evt.currentTarget) {
-                evt.currentTarget.classList.add("active");
-            }
-            
-            // 順暢平滑滾動至頁面主要區域
-            window.scrollTo({ top: 200, behavior: 'smooth' });
         }
     </script>
 </body>
